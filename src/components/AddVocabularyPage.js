@@ -6,7 +6,7 @@ import { addVocabulary } from '../actions/vocabularies';
 
 const AddVocabularyPage = (props) => (
     <div>
-      <h1>Add Vocabulary</h1>
+      <h1>Adicionar Palavra</h1>
       <VocabularyForm
         languages={props.languages}
         onSubmit={(vocabulary) => {

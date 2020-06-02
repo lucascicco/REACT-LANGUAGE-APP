@@ -14,6 +14,8 @@ export default class VocabularyForm extends React.Component {
       language: props.language ? props.language : '',
       error: ''
     };
+    
+
   }
   onWordChange = (e) => {
     const word = e.target.value;
@@ -36,15 +38,10 @@ export default class VocabularyForm extends React.Component {
       const phrases = e.target.value;
       this.setState(() => ({ phrases }))
   }
-  TestingIt = () => {
-    this.state.languages.map((language) => {
-      console.log(language.language)
-    })
-  }
   onSubmit = (e) => {
-
+  
     e.preventDefault();
-
+    
     if (!this.state.word) {
       this.setState(() => ({ error: 'Por favor, digite a palara original.' }));
     } else {
@@ -87,7 +84,15 @@ export default class VocabularyForm extends React.Component {
             onChange={this.onPhrasesChange}
           >
           </textarea>
-  
+          
+          <select>
+              {
+                this.state.languages.map((language) => {
+                  <option key={language.id} value={language.language}>{language.language}</option>
+                })
+              }
+          </select>
+
           <div>
             <button className="button">Salvar Vocabulário</button>
           </div>

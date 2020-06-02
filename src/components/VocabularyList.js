@@ -7,7 +7,10 @@ const VocabularyList = (props) => (
   <div>
     <h3>Lista de Vocabulários</h3>
     {props.vocabularies.map((vocabulary) => {
-      return <VocabularyListItem key={vocabulary.id} {...vocabulary} />;
+      return <VocabularyListItem 
+      key={vocabulary.id}
+      LanguageId={props.LanguageId}
+      {...vocabulary} />;
     })}
   </div>
 );

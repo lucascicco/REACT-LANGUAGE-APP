@@ -10,7 +10,6 @@ export default class VocabularyForm extends React.Component {
       translation: props.translation ? props.vocabulary.translation : '',
       phrases: props.phrases ? props.vocabulary.phrases : '',
       createdAt: props.createdAt ? moment(props.vocabulary.createdAt).format("MMM Do YY") : moment().format("MMM Do YY"),
-      languages: props.languages,
       language: props.language ? props.language : '',
       error: ''
     };
@@ -30,10 +29,6 @@ export default class VocabularyForm extends React.Component {
       this.setState(() => ({ createdAt }));
     }
   };
-  onLanguageChange = (e) => {
-    const language = e.target.value;
-    this.setState(() => ({ language }))
-  }
   onPhrasesChange = (e) => {
       const phrases = e.target.value;
       this.setState(() => ({ phrases }))
@@ -55,6 +50,7 @@ export default class VocabularyForm extends React.Component {
         language: this.state.language
       });
     }
+
   };
   render() {
     return (
@@ -85,14 +81,6 @@ export default class VocabularyForm extends React.Component {
           >
           </textarea>
           
-          <select>
-              {
-                this.state.languages.map((language) => {
-                  <option key={language.id} value={language.language}>{language.language}</option>
-                })
-              }
-          </select>
-
           <div>
             <button className="button">Salvar Vocabulário</button>
           </div>

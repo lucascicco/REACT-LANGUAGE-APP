@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import VocabularyDashboardPage from './VocabularyDashboardPage'
+import { Link } from 'react-router-dom';
 
 const LanguageDashboard = (props) => (
   <div>
@@ -10,7 +10,19 @@ const LanguageDashboard = (props) => (
           <span>Idioma inexistente</span>
         </div>
     ) : (
-        <VocabularyDashboardPage />
+      <div>
+      <ul>
+
+      </ul>
+        {
+          props.languages.map((language) => {
+            return <li  key={language.id}>
+                      <Link key={language.id} to={`language/${language.id}`}>{language.language}</Link>
+                  </li>    
+          })
+        }
+      </div>
+        
     )
   }
   </div>

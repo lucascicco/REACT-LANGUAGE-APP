@@ -8,21 +8,21 @@ const AddVocabularyPage = (props) => (
     <div>
       <h1>Adicionar Palavra</h1>
       <VocabularyForm
-        languages={props.languages}
+        language={props.language.language}
         onSubmit={(vocabulary) => {
           props.dispatch(addVocabulary(vocabulary));
-          props.history.push('/');
+          props.history.push(`/language/${props.language.id}`);
         }}
       />
     </div>
 );
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
-    languages: state.languages
+    language: state.languages.find((language) => language.id === props.match.params.id)
   };
 };
+
 
 export default connect(mapStateToProps)(AddVocabularyPage)
   

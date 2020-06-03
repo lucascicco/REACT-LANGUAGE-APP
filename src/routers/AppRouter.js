@@ -18,7 +18,7 @@ const AppRouter = () => (
         <Route path="/createLanguage" component={addLanguagePage} />
         <Route path="/language/:id" component={VocabularyDashboard} />
         <Route path="/createWord/:id" component={addVocabularyPage} />
-        <Route path="/editWord/:id" component={EditVocabularyPage} />
+        <Route path="/editWord/:idLanguage/:id" component={EditVocabularyPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

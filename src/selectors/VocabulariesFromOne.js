@@ -1,4 +1,4 @@
-export default (vocabularies, language, { text, sortBy }) => {
+export default (vocabularies, language, { text }) => {
     //Separa vocabularios por lingua.
     const vocabulariesX = vocabularies.filter((vocabulary) => {
         return vocabulary.language === language
@@ -9,10 +9,6 @@ export default (vocabularies, language, { text, sortBy }) => {
         const translatedWord = vocabulary.translation.toLowerCase().includes(text.toLowerCase())
 
         return originalWord || translatedWord
-    }).sort((a, b) => {
-          if (sortBy === 'date') {
-            return a.createdAt < b.createdAt ? 1 : -1;
-          }
-    });
+    })
 };
   

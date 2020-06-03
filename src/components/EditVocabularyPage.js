@@ -5,7 +5,6 @@ import { editVocabulary , removeVocabulary } from '../actions/Vocabularies';
 
 
 const EditVocabularyPage = (props) => {
-  console.log(props)
   return (
     <div>
       <VocabularyForm

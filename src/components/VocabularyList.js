@@ -1,47 +1,57 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import VocabularyListItem from './VocabularyListItem';
-import SelectVocabulary from '../selectors/vocabularies';
+import VocabulariesFromOne from '../selectors/VocabulariesFromOne'
 
-class VocabularyList extends React.Component{
-  constructor(props){
-    super(props)
+// class VocabularyList extends React.Component{
+//   constructor(props){
+//     super(props)
 
-    this.state = {
-      vocabularies: props.vocabularies,
-      idioma: props.language.id,
-      language: props.language.language
-    }
-    
-  }
-  componentDidMount(){
-    const vocabularies = this.state.vocabularies.filter((vocabulary) => {
-      return vocabulary.language === this.state.language
-    })
+//     this.state = {
+//       vocabularies: props.vocabularies,
+//       idioma: props.language.id,
+//       language: props.language.language
+//     }
+//   }
+//   render(){
+//     return (
+//       <div>
+//         <h3>Lista de Vocabulários</h3>
+//         {this.state.vocabularies.map((vocabulary) => {
+//           return <VocabularyListItem 
+//           key={vocabulary.id}
+//           idioma={this.state.idioma}
+//           {...vocabulary}
+//           />;
+//         })}
+//       </div>
+//     )
+//   }
+// }
 
-    this.setState(() => ({vocabularies}));
-  }
-  render(){
-    return (
-      <div>
-        <h3>Lista de Vocabulários</h3>
-        {this.state.vocabularies.map((vocabulary) => {
-          return <VocabularyListItem 
-          key={vocabulary.id}
-          idioma={this.state.idioma}
-          {...vocabulary}
-          />;
-        })}
-      </div>
-    )
-  }
+const VocabularyList = (props) => {
+  return(
+    <div>
+      <h3>Lista de Vocabulários</h3>
+      {props.vocabularies.map((vocabulary) => {
+        return <VocabularyListItem 
+        key={vocabulary.id}
+        idioma={props.language.id}
+        {...vocabulary}
+        />;
+      })}
+  </div>
+  )
 }
 
-const mapStateToProps = (state) => {
+
+const mapStateToProps = (state, props) => {
+  console.log(props.language.language)
   return {
-    vocabularies: SelectVocabulary(state.vocabularies, state.filters)
+    vocabularies: VocabulariesFromOne(state.vocabularies, props.language.language ,state.filters)
   };
 };
 
 export default connect(mapStateToProps)(VocabularyList);
+
 

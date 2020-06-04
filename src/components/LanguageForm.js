@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 class LanguageForm extends React.Component {
   constructor(props) {
@@ -25,8 +24,9 @@ class LanguageForm extends React.Component {
       this.setState(() => ({ error: '' }));
 
       this.props.onSubmit({
-        language: this.state.language,
+        language: this.state.language.toUpperCase()
       });
+      
     }
   };
   render() {
@@ -48,13 +48,7 @@ class LanguageForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    languages: state.languages
-  };
-};
 
-
-export default connect(mapStateToProps)(LanguageForm)
+export default LanguageForm
 
 

@@ -1,21 +1,53 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import LanguageForm from './LanguageForm'
-import { addLanguage } from '../actions/Languages';
+import { startAddLanguage } from '../actions/Languages';
 import LanguagesList from '../components/LanguageList'
 
 
-const addLanguagePage = (props) => (
-    <div>
-      <h1>Adicione um idioma</h1>
-      <LanguageForm
-        onSubmit={(Language) => {
-          props.dispatch(addLanguage(Language))
-        }}
-      />
-      <LanguagesList />
-    </div>
-);
+export class addLanguagePage extends React.Component{
+  onSubmit = (Language) => {
+    console.log(this.props.languages.length)
 
-export default connect()(addLanguagePage);
+    if(this.props.languages.length === 0){
+      this.props.startAddLanguage(Language);
+    }else{
+      const find =  this.props.languages.find((item) => {
+        return item.language === Language.language
+      })
+      console.log(find.language)
+      if(find !== undefined){
+        alert('Este idioma já existe.')
+      }else{
+        this.props.startAddLanguage(Language);
+      }
+    }
+  } 
+  render(){
+    return(
+      <div>
+        <h1>Adicione um idioma</h1>
+        <LanguageForm
+          onSubmit={this.onSubmit}
+        />
+        <LanguagesList />
+      </div>
+    )
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  startAddLanguage: (Language) => dispatch(startAddLanguage(Language))
+});
+
+
+const mapStateToProps = (state) => {
+  return {
+    languages: state.languages
+  };
+};
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(addLanguagePage);
   

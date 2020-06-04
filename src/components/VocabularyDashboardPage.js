@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const VocabularyDashboardPage = (props) =>{
   return(
     <div>
-      <h1>Idioma - {props.language.language}</h1>
+      <h1>Idioma - {props.language.language.toUpperCase()}</h1>
       <Link to={`/createWord/${props.match.params.id}`}>Criar vocabulário</Link>
       <VocabularyListFilters />
       {
@@ -29,10 +29,10 @@ const VocabularyDashboardPage = (props) =>{
 
 
 const mapStateToProps = (state, props) => {
-  const languageName = state.languages.find((language) => language.id === props.match.params.id).language
+  const language = state.languages.find((language) => language.id === props.match.params.id)
   return {
-    language: state.languages.find((language) => language.id === props.match.params.id),
-    vocabularies: VocabulariesFromOne(state.vocabularies, languageName ,  state.filters)
+    language: language,
+    vocabularies: VocabulariesFromOne(state.vocabularies, language.language, state.filters)
   }
 };
 

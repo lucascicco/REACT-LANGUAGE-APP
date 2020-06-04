@@ -13,7 +13,7 @@ export default (state = VocabulariesReducerDefaultState, action) => {
       return state.filter(({ id }) => id !== action.id);
     case 'EDIT_VOCABULARY':
       return state.map((vocabulary) => {
-        if (vocabulary.id === vocabulary.id) {
+        if (vocabulary.id === action.id) {
           return {
             ...vocabulary,
             ...action.updates
@@ -22,9 +22,10 @@ export default (state = VocabulariesReducerDefaultState, action) => {
           return vocabulary;
         };
       });
-    case 'SET_EXPENSES':
+    case 'SET_VOCABULARIES':
       return action.vocabularies;
     default:
       return state;
   }
 };
+  

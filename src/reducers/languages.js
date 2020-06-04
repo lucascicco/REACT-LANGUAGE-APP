@@ -23,7 +23,7 @@ export default (state = LanguagesReducerDefaultState, action) => {
         };
       });
     case 'SET_LANGUAGE':
-      return action.language;
+      return action.languages;
     default:
       return state;
   }

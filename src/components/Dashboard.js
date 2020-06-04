@@ -17,7 +17,7 @@ const LanguageDashboard = (props) => (
         {
           props.languages.map((language) => {
             return <li  key={language.id}>
-                      <Link key={language.id} to={`language/${language.id}`}>{language.language}</Link>
+                      <Link key={language.id} to={`/language/${language.id}`}>{language.language}</Link>
                   </li>    
           })
         }

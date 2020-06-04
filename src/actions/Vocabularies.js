@@ -1,4 +1,5 @@
 import uuid from 'uuid';
+import database from '../firebase/firebase';
 
 // ADD_VOCABULARY
 export const addVocabulary = (
@@ -22,25 +23,30 @@ export const addVocabulary = (
 });
 
 
-// export const startAddVocabulary = (vocabularyData = {}) => {
-//   return (dispatch, getState) => {
-//     const uid = getState().auth.uid;
-//     const {
-//       word = '',
-//       translation = '',
-//       phrases = 0,
-//       createdAt = 0
-//     } = vocabularyData;
-//     const expense = { word, translation, phrases, createdAt };
+export const startAddVocabulary = (vocabularyData = {}) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
 
-//     return database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
-//       dispatch(addExpense({
-//         id: ref.key,
-//         ...expense
-//       }));
-//     });
-//   };
-// };
+    const {
+      word = '',
+      translation = '',
+      phrases = '',
+      language = '',
+      createdAt = 0
+    } = vocabularyData;
+
+    const vocabulary = { word, translation, phrases,  language , createdAt };
+    
+    const languagex = vocabulary.language
+ 
+    return database.ref(`users/${uid}/${languagex}`).push(vocabulary).then((ref) => {
+      dispatch(addVocabulary({
+        id: ref.key,
+        ...vocabulary
+      }));
+    });
+  };
+};
 
 // REMOVE_VOCABULARY
 export const removeVocabulary = ({ id } = {}) => ({
@@ -48,51 +54,54 @@ export const removeVocabulary = ({ id } = {}) => ({
   id
 });
 
-// export const startRemoveExpense = ({ id } = {}) => {
-//   return (dispatch, getState) => {
-//     const uid = getState().auth.uid;
-//     return database.ref(`users/${uid}/expenses/${id}`).remove().then(() => {
-//       dispatch(removeExpense({ id }));
-//     });
-//   };
-// };
+export const startRemoveVocabulary = ({ id  , language } = {}) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    return database.ref(`users/${uid}/${language}/${id}`).remove().then(() => {
+      dispatch(removeVocabulary({ id }));
+    });
+  };
+};
 
 // EDIT_VOCABULARY
-export const editVocabulary = (id, updates) => ({
+export const EditVocabulary = (id, updates) => ({
   type: 'EDIT_VOCABULARY',
   id,
   updates
 });
 
-// export const startEditExpense = (id, updates) => {
-//   return (dispatch, getState) => {
-//     const uid = getState().auth.uid;
-//     return database.ref(`users/${uid}/expenses/${id}`).update(updates).then(() => {
-//       dispatch(editExpense(id, updates));
-//     });
-//   };
-// };
+export const startEditVocabulary = ({id, language}, updates ) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    return database.ref(`users/${uid}/${language}/${id}`).update(updates).then(() => {
+      dispatch(EditVocabulary(id, updates));
+    });
+  };
+};
 
 // SET_VOCABULARIES
-export const setVocabularies = (vocabularies) => ({
+export const SetVocabularies = (vocabularies) => ({
   type: 'SET_VOCABULARIES',
   vocabularies
 });
 
-// export const startSetExpenses = () => {
-//   return (dispatch, getState) => {
-//     const uid = getState().auth.uid;
-//     return database.ref(`users/${uid}/expenses`).once('value').then((snapshot) => {
-//       const expenses = [];
+export const startSetVocabularies = (language) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
 
-//       snapshot.forEach((childSnapshot) => {
-//         expenses.push({
-//           id: childSnapshot.key,
-//           ...childSnapshot.val()
-//         });
-//       });
+    return database.ref(`users/${uid}/${language}`).once('value').then((snapshot) => {
+      const vocabularies = [];
 
-//       dispatch(setExpenses(expenses));
-//     });
-//   };
-// };
+      snapshot.forEach((childSnapshot) => {
+        vocabularies.push({
+          id: childSnapshot.key,
+          ...childSnapshot.val()
+        });
+      });
+
+      dispatch(SetVocabularies(vocabularies));
+    });
+  };
+};

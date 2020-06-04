@@ -6,9 +6,9 @@ export default class VocabularyForm extends React.Component {
     super(props);
 
     this.state = {
-      word: props.word ? props.vocabulary.word : '',
-      translation: props.translation ? props.vocabulary.translation : '',
-      phrases: props.phrases ? props.vocabulary.phrases : '',
+      word: props.vocabulary.word,
+      translation: props.vocabulary.translation,
+      phrases: props.vocabulary.phrases,
       createdAt: props.createdAt ? moment(props.vocabulary.createdAt).format("MMM Do YY") : moment().format("MMM Do YY"),
       language: props.language ? props.language : '',
       error: ''
@@ -29,13 +29,8 @@ export default class VocabularyForm extends React.Component {
     this.setState(() => ({ phrases }))
   }
   onSubmit = (e) => {
-    
-    e.preventDefault();
 
-    if (!this.state.word) {
-      this.setState(() => ({ error: 'Por favor, digite a palara original.' }));
-    } else {
-      this.setState(() => ({ error: '' }));
+    e.preventDefault();
 
       this.props.onSubmit({
         word: this.state.word.toUpperCase(),
@@ -44,9 +39,10 @@ export default class VocabularyForm extends React.Component {
         phrases: this.state.phrases,
         language: this.state.language
       });
-    }
 
-  };
+      console.log(this.state)
+
+    }
   render() {
     return (
       <div>
@@ -55,7 +51,6 @@ export default class VocabularyForm extends React.Component {
 
           <input
             type="text"
-            placeholder="Palavra original"
             autoFocus
             value={this.state.word}
             onChange={this.onWordChange}
@@ -67,13 +62,12 @@ export default class VocabularyForm extends React.Component {
             onChange={this.onTranslationChange}
           />
           <textarea
-            placeholder="Anotações"
             value={this.state.phrases}
             onChange={this.onPhrasesChange}
           ></textarea>
           
           <div>
-            <button className="button">Criar Vocabulário</button>
+            <button className="button">Salvar Vocabulário</button>
           </div>
 
         </form>

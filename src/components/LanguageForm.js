@@ -27,21 +27,24 @@ class LanguageForm extends React.Component {
         language: this.state.language.toUpperCase()
       });
       
+      this.setState(() => ({language: ''}))
     }
   };
   render() {
     return (
-      <form className="form" onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit}>
         {this.state.error && <p className="form__error">{this.state.error}</p>}
         <input
           type="text"
+          maxlength="20"
+          className="input-language"
           placeholder="Digite o nome do idioma"
           autoFocus
           value={this.state.language}
           onChange={this.onLanguageChange}
         />
         <div>
-          <button className="button">Salvar Idioma</button>
+          <button className="button button--add">Salvar Idioma</button>
         </div>
       </form>
     )

@@ -8,19 +8,8 @@ import { startEditVocabulary , startRemoveVocabulary } from '../actions/Vocabula
 
 export class EditVocabularyPage extends React.Component {
   onSubmit = (vocabulary) => {
-
-    const find = this.props.vocabularies.find((item) => {
-      return item.word === vocabulary.word
-    })
-
-    if(find !== undefined){
-      console.log('Este item já existe na lista de vocabulários' + find.word)
-      alert('Edite para uma outra palavra que já não exista na lista de vocabulários.')
-    }else{
       this.props.startEditVocabulary(this.props.vocabulary, vocabulary);
       this.props.history.push(`/language/${this.props.match.params.idLanguage}`);
-    }
-
   }
   onClick = () => {
     this.props.startRemoveVocabulary(this.props.vocabulary);
@@ -28,16 +17,22 @@ export class EditVocabularyPage extends React.Component {
   }
   render(){
     return(
-      <div>
-        <Link to={`/language/${this.props.match.params.idLanguage}`}>
-          Voltar
-        </Link>
-      <VocabularyForm
-        language={this.props.vocabulary.language}
-        vocabulary={this.props.vocabulary}
-        onSubmit={this.onSubmit}
-      />
-      <button onClick={this.onClick}>Remover</button>
+      <div className="content-container">
+        <div className=" back-to-page back-to-page-fromedit">
+          <Link to={`/language/${this.props.match.params.idLanguage}`}
+            className="back-to-button back-to-button--edit">
+              Voltar
+          </Link>
+          <button onClick={this.onClick}
+          className="back-to-button back-to-button--edit">Remover</button>
+        </div>
+        <div>
+          <VocabularyForm
+            language={this.props.vocabulary.language}
+            vocabulary={this.props.vocabulary}
+            onSubmit={this.onSubmit}
+          />
+        </div>
     </div>
     )
   }

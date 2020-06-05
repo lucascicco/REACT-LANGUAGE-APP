@@ -5,7 +5,7 @@ import LanguageListItem from './LanguageListItem';
 const LanguageList = (props) => {
   return(
     <div>
-        <h1>{props.languages.length === 0 ? '' : 'Lista de idiomas'}</h1>
+        <h1 className="centering">{props.languages.length === 0 ? '' : 'Lista de idiomas'}</h1>
         {props.languages.map((language) => {
           return <LanguageListItem key={language.id} {...language}
           />;

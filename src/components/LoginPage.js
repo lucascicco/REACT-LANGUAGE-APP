@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
 
 export const LoginPage = ({ startLogin }) => (
-    <div>
-      <h1>Línguas - APP </h1>
-      <p>Faça uso dessa aplicação para aprimorar seus estudos de idiomas.</p>
-      <button onClick={startLogin}>Entrar com Google</button>
-        <div>
-          <p>Desenvolvido por Lucas Vitor.</p>
-        </div>
-    </div>
+    <div className="box-layout">
+      <div className="box-layout__box">
+       <h1 className="box-layout__title">Línguas APP </h1>
+         <p>Faça uso dessa aplicação para aprimorar seus estudos de idiomas.</p>
+         <button className="button" onClick={startLogin}>Entrar com Google</button>
+           <div>
+             <p>Desenvolvido por <strong>Lucas Vitor</strong>.</p>
+           </div>
+      </div>
+    </div>  
 );
 
 const mapDispatchToProps = (dispatch) => ({

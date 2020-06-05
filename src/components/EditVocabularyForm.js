@@ -18,7 +18,6 @@ export default class VocabularyForm extends React.Component {
   onWordChange = (e) => {
     const word = e.target.value;
     this.setState(() => ({ word }));
-
   };
   onTranslationChange = (e) => {
     const translation = e.target.value;
@@ -40,23 +39,23 @@ export default class VocabularyForm extends React.Component {
         language: this.state.language
       });
 
-      console.log(this.state)
-
     }
   render() {
     return (
-      <div>
+      <div className="content-container">
           <form className="form" onSubmit={this.onSubmit}>
           {this.state.error && <p className="form__error">{this.state.error}</p>}
 
           <input
             type="text"
+            maxlength="20"
             autoFocus
             value={this.state.word}
             onChange={this.onWordChange}
           ></input>
           <input
             type="text"
+            maxlength="20"
             placeholder="Tradução"
             value={this.state.translation}
             onChange={this.onTranslationChange}

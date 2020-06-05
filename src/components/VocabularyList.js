@@ -6,8 +6,8 @@ import VocabulariesFromOne from '../selectors/VocabulariesFromOne'
 
 const VocabularyList = (props) => {
   return(
-    <div>
-      <h3>Lista de Vocabulários</h3>
+    <div className="content-container">
+      <h3 className="title-x">Lista de Vocabulários</h3>
       {props.vocabularies.map((vocabulary) => {
         return <VocabularyListItem 
         key={vocabulary.id}

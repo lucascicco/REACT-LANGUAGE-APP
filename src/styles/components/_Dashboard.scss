@@ -1,0 +1,60 @@
+.dashboard-content{
+    margin: $s-size auto;
+    max-width: 80rem;
+    display: flex;
+    justify-content: center;
+}
+
+.list-dashboard{
+    margin-top: $l-size;
+    width: 100%;
+}
+
+.list-dashboard-li{
+    margin: $l-size auto;
+    width: 100%;
+}
+
+.dashboard-item{
+    text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: $off-white;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+    background-color: $dark-blue;
+    padding: $m-size;
+    border-radius: 10px;
+}
+
+.dashboard-item:hover{
+    background-color: lighten($dark-blue, $amount: 13%);
+    font-weight: 600;
+}
+
+
+
+.centering{
+    text-align: center;
+}
+
+
+.title-style{
+    background-color: $dark-grey;
+    color: white;
+    padding: $s-size;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.back-to-page{
+    margin-top: $m-size;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.back-to-page-fromedit{
+    margin: $m-size 0;
+    justify-content: space-between;
+}

@@ -8,11 +8,12 @@ export class VocabularyListFilter extends React.Component {
   };
   render() {
     return (
-      <div>
+      <div className="content-container-input">
           <div>
             <input
                 type="text"
-                className="text-input"
+                maxlength="20"
+                className="input-language"
                 placeholder="Buscar vocabulário"
                 value={this.props.filters.text}
                 onChange={this.onTextChange}

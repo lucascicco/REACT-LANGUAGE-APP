@@ -57,23 +57,29 @@ export default class VocabularyForm extends React.Component {
             type="text"
             placeholder="Palavra original"
             autoFocus
+            maxlength="20"
+            className="input-vocabulary"
             value={this.state.word}
             onChange={this.onWordChange}
           ></input>
           <input
             type="text"
+            maxlength="20"
             placeholder="Tradução"
+            className="input-vocabulary"
             value={this.state.translation}
             onChange={this.onTranslationChange}
           />
           <textarea
             placeholder="Anotações"
+            maxlength="470"
+            className="input-vocabulary"
             value={this.state.phrases}
             onChange={this.onPhrasesChange}
           ></textarea>
           
           <div>
-            <button className="button">Criar Vocabulário</button>
+            <button className="button button--create">Criar Vocabulário</button>
           </div>
 
         </form>

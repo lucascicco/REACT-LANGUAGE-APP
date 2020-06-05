@@ -1,0 +1,64 @@
+.button {
+ background: $dark-blue;
+ border-radius: 5px;
+ border: none;
+ color: white;
+ display: inline-block;
+ font-size: $font-size-large;
+ font-weight: 300;
+ line-height: 1;
+ padding: $s-size;
+ text-decoration: none;
+}
+
+.button--link {
+  background: none;
+}
+.button--logout {
+    background: darken($blue, $amount: 10%);
+}
+
+.button--secondary {
+  background: #888;
+}
+
+.button--add{
+  width: 80%;
+}
+  
+.button:hover{
+  background-color: lighten($dark-blue, $amount: 13%);
+}
+.button_create{
+  text-decoration: none;
+  font-size: $m-size;
+  color: darken($dark-blue, $amount: 25%)
+}
+
+.button_create:hover{
+  text-decoration: underline;
+}
+
+.button--create{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.back-to-button{
+  padding: $s-size;
+  background-color: $dark-blue;
+  color: white;
+  text-decoration: none;
+  border-radius: 2px;
+  margin-right: $s-size;
+}
+
+.back-to-button:hover{
+  background-color: lighten($dark-blue, $amount: 13%);
+}
+
+.back-to-button--edit{
+  margin-right: 0;
+}
+

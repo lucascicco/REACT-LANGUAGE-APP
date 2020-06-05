@@ -15,7 +15,7 @@ export class addLanguagePage extends React.Component{
       const find =  this.props.languages.find((item) => {
         return item.language === Language.language
       })
-      console.log(find.language)
+      
       if(find !== undefined){
         alert('Este idioma já existe.')
       }else{
@@ -25,7 +25,7 @@ export class addLanguagePage extends React.Component{
   } 
   render(){
     return(
-      <div>
+      <div className="content-container centering">
         <h1>Adicione um idioma</h1>
         <LanguageForm
           onSubmit={this.onSubmit}

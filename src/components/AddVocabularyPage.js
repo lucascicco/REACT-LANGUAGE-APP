@@ -27,11 +27,15 @@ export class AddVocabularyPage extends React.Component{
   }
   render(){
     return(
-       <div>
-          <Link to={`/language/${this.props.language.id}`}>
+       <div className="content-container">
+        <div className="back-to-page">
+          <Link to={`/language/${this.props.language.id}`}
+          className="back-to-button"
+          >
             Voltar  
           </Link>
-          <h1>Adicionar Palavra</h1>
+          <h1 className="centering">Adicionar Palavra</h1>
+        </div>
           <VocabularyForm
             language={this.props.language.language}
             onSubmit={this.onSubmit}

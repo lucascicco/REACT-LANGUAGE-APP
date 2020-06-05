@@ -1,0 +1,38 @@
+.list-config{
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: $s-size;
+}
+
+.list-language{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.list-language-item-link{
+    font-size: $m-size;
+    color: white;
+    background-color: $dark-grey;
+    text-decoration: none;
+    width: 70%;
+    text-align: center;
+}
+
+.list-language-item-link:hover{
+    background-color: lighten($dark-grey, $amount: 10%);
+}
+
+.list-language-button{
+    background-color: white ;
+    font-weight: bold;
+    width: 5%;
+    text-align: center;
+    border: 1px solid black;
+  }
+  
+  .list-language-button:hover{
+    background-color: red;
+    color: white;
+  }
+  

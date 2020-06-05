@@ -1,0 +1,38 @@
+.inside-flex{
+    width: 100%;
+    background-color: $dark-grey;
+}
+
+.title-voc{
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 0 $s-size;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 1.6em;
+}
+
+.entire-box{
+    background-color: white;
+    padding: $m-size;
+    border: 1px solid black;
+    margin: $s-size;
+}
+
+
+.translation{
+    background-color: darken($off-white, $amount: 8%)
+}
+
+.word-break{
+    word-break: break-all;
+}
+
+.notes-box{
+    background-color: darken($off-white, $amount: 1%)
+}
+
+.title-x{
+    font-size: 1.6em;
+}

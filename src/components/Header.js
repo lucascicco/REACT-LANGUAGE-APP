@@ -4,11 +4,17 @@ import { NavLink } from 'react-router-dom';
 import { startLogout } from '../actions/auth';
 
 const Header = ({ startLogout }) => (
-  <header>
-    <h1>Revisão de vocabulário</h1>
-    <NavLink to="/" activeClassName="is-active" exact={true}>Home</NavLink>
-    <NavLink to="/createLanguage" activeClassName="is-active" exact={true}>Idiomas</NavLink>
-    <button className="button button--link" onClick={startLogout}>Sair</button>
+  <header className="header">
+    <div className="content-container">
+          <h1 className="header__title">Revisão de Vocabulário</h1>
+          <div className="header__menu">
+            <div>
+              <NavLink className="button-navlink" to="/dashboard" activeClassName="active" exact={true}>Início</NavLink>
+              <NavLink className="button-navlink" to="/createLanguage" activeClassName="active">Idiomas</NavLink>
+            </div>
+            <button className="button button--logout " onClick={startLogout}>Sair</button>
+          </div> 
+    </div>
   </header>
 );
 

@@ -1,0 +1,22 @@
+.input-language{
+    width: 80%;
+    padding: $s-size;
+    text-align: center;
+    font-size: $m-size;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: $s-size;
+}
+
+
+.form{
+    display: flex;
+    flex-direction: column;
+    >* {
+        padding: $s-size;
+        margin-bottom: $m-size;
+    }
+    textarea{
+        height: 200px;
+    }
+}
+
